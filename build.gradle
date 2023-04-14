@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+
+repositories {
+    // höchste Priorität!
+
+    maven {
+        url 'https://korriban/repository/maven-central/'
+        credentials {
+            username nexusRepositoryPublicUsername
+            password nexusRepositoryPublicPassword
+        }
+    }
+
+
+}
+
+
+dependencies {
+    implementation 'org.jfree:jfreechart:1.5.3'
+    implementation 'org.jdom:jdom2:2.0.6.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
