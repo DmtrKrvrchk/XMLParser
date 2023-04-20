@@ -8,18 +8,23 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
-
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.xy.XYSeriesCollection;
 
 
 public class XMLParser {
 
     public static void main(String[] args) {
         SAXBuilder builder = new SAXBuilder();
-        File xmlFile = new File("C:\\Users\\d.krivoruchko\\Documents\\Epikur\\Übungsaufgaben\\values.xml");
+        File xmlFile = new File("C:\\Users\\d.krivoruchko\\IdeaProjects\\XMLParser\\values.xml");
         try {
 
             Document document = builder.build(xmlFile);
             Element rootNode = document.getRootElement();
+            XYSeriesCollection dataset = new XYSeriesCollection();
 
             List<Object> coordinates = new ArrayList<>();
             for (Element result : rootNode.getChildren("Result")) {
@@ -45,6 +50,22 @@ public class XMLParser {
                     System.out.println("Scale: "+scale+" AV: "+av+" DEV: "+dev);
                 }
             }
+
+            JFreeChart chart = ChartFactory.createXYLineChart(
+                    "Patient Values",
+                    "Value",
+                    "Scale",
+                    dataset,
+                    PlotOrientation.VERTICAL,
+                    false,
+                    true,
+                    false
+            );
+
+
+            ChartFrame frame = new ChartFrame("Patient Values", chart);
+            frame.pack();
+            frame.setVisible(true);
 
 
 
