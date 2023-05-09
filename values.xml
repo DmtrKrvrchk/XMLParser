@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReportData>
+  <Result>
+    <Value Scale="SOM" V="1.73" />
+    <Value Scale="DEP" V="1.25" />
+    <Value Scale="PHO" V="3.35" />
+    <Value Scale="PSB" V="0.93" />
+    <Value Scale="WOHL" V="1.99" />
+    <Value Scale="INT" V="2.63" />
+    <Value Scale="SELB" V="3.01" />
+    <Value Scale="A_P" V="1.72" />
+    <Value Scale="SOZU" V="1.70" />
+    <Value Scale="SOZB" V="1.82" />
+  </Result>
+  <Report title="Referenzwerte stationärer Psychotherapiepatienten">
+    <Value Scale="SOM" AV="1.59" DEV="0.92" />
+    <Value Scale="DEP" AV="1.83" DEV="1.02" />
+    <Value Scale="PHO" AV="1.79" DEV="0.92" />
+    <Value Scale="PSB" AV="1.45" DEV="0.77" />
+    <Value Scale="WOHL" AV="2.60" DEV="0.76" />
+    <Value Scale="INT" AV="1.90" DEV="1.07" />
+    <Value Scale="SELB" AV="2.24" DEV="0.92" />
+    <Value Scale="A_P" AV="1.93" DEV="0.89" />
+    <Value Scale="SOZU" AV="1.67" DEV="0.89" />
+    <Value Scale="SOZB" AV="1.76" DEV="0.80" />
+  </Report>
+  <Report title="Referenzwerte von Hausarztpatienten (Gesamtstichprobe)">
+    <Value Scale="SOM" AV="0.87" DEV="0.74" />
+    <Value Scale="DEP" AV="0.37" DEV="0.59" />
+    <Value Scale="PHO" AV="0.21" DEV="0.47" />
+    <Value Scale="PSB" AV="0.52" DEV="0.52" />
+    <Value Scale="WOHL" AV="1.25" DEV="0.85" />
+    <Value Scale="INT" AV="0.61" DEV="0.70" />
+    <Value Scale="SELB" AV="0.91" DEV="0.83" />
+    <Value Scale="A_P" AV="0.85" DEV="0.80" />
+    <Value Scale="SOZU" AV="1.34" DEV="1.03" />
+    <Value Scale="SOZB" AV="1.13" DEV="0.77" />
+  </Report>
+  <Report title="Referenzwerte von Hausarztpatienten (Teilstichprobe Gesunde)">
+    <Value Scale="SOM" AV="0.62" DEV="0.57" />
+    <Value Scale="DEP" AV="0.21" DEV="0.39" />
+    <Value Scale="PHO" AV="0.10" DEV="0.27" />
+    <Value Scale="PSB" AV="0.34" DEV="0.35" />
+    <Value Scale="WOHL" AV="1.09" DEV="0.72" />
+    <Value Scale="INT" AV="0.50" DEV="0.60" />
+    <Value Scale="SELB" AV="0.69" DEV="0.71" />
+    <Value Scale="A_P" AV="0.57" DEV="0.63" />
+    <Value Scale="SOZU" AV="1.30" DEV="1.02" />
+    <Value Scale="SOZB" AV="1.02" DEV="0.72" />
+  </Report>
+</ReportData>
