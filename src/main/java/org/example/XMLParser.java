@@ -126,9 +126,6 @@ public class XMLParser {
                         renderer.setSeriesStroke(1, new BasicStroke(3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
                         renderer.setSeriesStroke(2, new BasicStroke(3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
                         renderer.setSeriesStroke(3, new BasicStroke(3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
-                        renderer.setSeriesFillPaint(1, new Color(136, 8, 8));
-                        renderer.setSeriesFillPaint(2, new Color(34, 139, 34));
-                        renderer.setSeriesFillPaint(3, new Color(255, 255, 0));
                     }
                 }
             });
