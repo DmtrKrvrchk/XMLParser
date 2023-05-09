@@ -20,9 +20,6 @@ import org.jfree.data.xy.YIntervalSeriesCollection;
 import javax.swing.*;
 
 
-/**
- *
- */
 public class XMLParser {
 
     public static void main(String[] args) {
