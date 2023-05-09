@@ -56,7 +56,6 @@ public class XMLParser {
                 for (Element value : report.getChildren("Value")) {
                     Double av = Double.parseDouble(value.getAttributeValue("AV"));
                     Double dev = Double.parseDouble(value.getAttributeValue("DEV"));
-
                     if (report.getAttributeValue("title").equals("Referenzwerte stationärer Psychotherapiepatienten")) {
                         stationaerYSeries.add(yWert, av, av-dev, av+dev);
                     } else if (report.getAttributeValue("title").equals("Referenzwerte von Hausarztpatienten (Gesamtstichprobe)")) {
@@ -84,7 +83,7 @@ public class XMLParser {
             DeviationRenderer renderer = new DeviationRenderer(true, false);
             plot.setRenderer(renderer);
 
-            JComboBox comboBox = new JComboBox();
+            JComboBox<String> comboBox = new JComboBox<>();
             for (Element report : rootNode.getChildren("Report")) {
                 comboBox.addItem(report.getAttributeValue("title"));
             }
@@ -92,43 +91,48 @@ public class XMLParser {
 
             comboBox.addActionListener(e -> {
                 switch (comboBox.getSelectedIndex()) {
-                    case 0:
+                    case 0 -> {
                         dataset.removeAllSeries();
                         dataset.addSeries(resultYSeries);
                         dataset.addSeries(stationaerYSeries);
                         renderer.setSeriesStroke(0, new BasicStroke(3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
                         renderer.setSeriesStroke(1, new BasicStroke(3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
                         renderer.setSeriesFillPaint(1, new Color(136, 8, 8));
-                        break;
-                    case 1:
+                    }
+                    case 1 -> {
                         dataset.removeAllSeries();
                         dataset.addSeries(resultYSeries);
                         dataset.addSeries(hausGesamtYSeries);
                         renderer.setSeriesStroke(0, new BasicStroke(3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
                         renderer.setSeriesStroke(1, new BasicStroke(3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
-                        break;
-                    case 2:
+                        renderer.setSeriesFillPaint(1, new Color(136, 8, 8));
+                    }
+                    case 2 -> {
                         dataset.removeAllSeries();
                         dataset.addSeries(resultYSeries);
                         dataset.addSeries(hausTeilYSeries);
                         renderer.setSeriesStroke(0, new BasicStroke(3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
                         renderer.setSeriesStroke(1, new BasicStroke(3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
                         renderer.setSeriesFillPaint(1, new Color(136, 8, 8));
-                        break;
-                    default:
+                    }
+                    default -> {
                         dataset.removeAllSeries();
                         dataset.addSeries(resultYSeries);
                         dataset.addSeries(stationaerYSeries);
                         dataset.addSeries(hausGesamtYSeries);
                         dataset.addSeries(hausTeilYSeries);
+                        renderer.setSeriesFillPaint(0, new Color(0, 71, 171));
+                        renderer.setSeriesFillPaint(1, new Color(136, 8, 8));
+                        renderer.setSeriesFillPaint(2, new Color(34, 139, 34));
+                        renderer.setSeriesFillPaint(3, new Color(255, 255, 0));
                         renderer.setSeriesStroke(0, new BasicStroke(3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
                         renderer.setSeriesStroke(1, new BasicStroke(3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
                         renderer.setSeriesStroke(2, new BasicStroke(3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
                         renderer.setSeriesStroke(3, new BasicStroke(3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
-                        renderer.setSeriesFillPaint(1, new Color(34, 139, 34 ));
-                        renderer.setSeriesFillPaint(2, new Color(0, 71, 171 ));
-                        renderer.setSeriesFillPaint(3, new Color(136, 8, 8));
-                        break;
+                        renderer.setSeriesFillPaint(1, new Color(136, 8, 8));
+                        renderer.setSeriesFillPaint(2, new Color(34, 139, 34));
+                        renderer.setSeriesFillPaint(3, new Color(255, 255, 0));
+                    }
                 }
             });
 
