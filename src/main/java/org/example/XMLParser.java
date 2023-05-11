@@ -21,9 +21,11 @@ import javax.swing.*;
 
 
 public class XMLParser {
-
+//TODO Bitte in mehrere Klassen aufteilen, MVC?
     public static void main(String[] args) {
         SAXBuilder builder = new SAXBuilder();
+
+        //TODO Bitte Pfad innerhalb des Projektes angeben, sodass man direkt nach Auschecken des Projektes es auch starten kann
         File xmlFile = new File("C:\\Users\\d.krivoruchko\\IdeaProjects\\XMLParser\\values.xml");
 
         try {
