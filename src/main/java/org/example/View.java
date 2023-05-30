@@ -11,28 +11,39 @@ import org.jfree.data.xy.YIntervalSeriesCollection;
 import javax.swing.*;
 import java.awt.*;
 
-public class ChartFabrik {
-    private final String chartTitle;
-    private final String xAxeLabel;
-    private final String yAxeLabel;
-    private final JFreeChart chart;
-    private final YIntervalSeriesCollection dataset;
+/**
+ * Class to define a view-component
+ * @author d.krivoruchko
+ */
+public class View {
+    /** A frame for displaying a chart **/
+    private final ChartFrame frame;
+
+    /** A list of data with XML-Tag "Result" **/
     private final YIntervalSeries resultYSeries;
+
+    /** A list of data with XML-Tag "Referenzwerte stationärer Psychotherapiepatienten" with its deviation **/
     private final YIntervalSeries stationaerYSeries;
+
+    /** A list of data with XML-Tag "Referenzwerte von Hausarztpatienten (Gesamtstichprobe)" with its deviation **/
     private final YIntervalSeries hausGesamtYSeries;
+
+    /** A list of data with XML-Tag "Referenzwerte von Hausarztpatienten (Teilstichprobe Gesunde)" with its deviation **/
     private final YIntervalSeries hausTeilYSeries;
 
-    public ChartFabrik (String chartTitle, String xAxeLabel, String yAxeLabel, YIntervalSeriesCollection dataset) {
-        chart = ChartFactory.createXYLineChart(
-                this.chartTitle = chartTitle,
-                this.xAxeLabel = xAxeLabel,
-                this.yAxeLabel = yAxeLabel,
-                this.dataset = dataset,
-                PlotOrientation.HORIZONTAL,
-                true,
-                true,
-                false
-        );
+    /** A chart to display **/
+    private JFreeChart chart;
+
+    /**
+     * Constructor to create a view-object
+     * @param chartTitle the chart title
+     * @param xAxeLabel a label for the X-axis
+     * @param yAxeLabel a label for the Y-axis
+     * @param dataset the dataset for the chart
+     */
+    public View(String chartTitle, String xAxeLabel, String yAxeLabel, YIntervalSeriesCollection dataset) {
+        chart = createChart(chartTitle, xAxeLabel, yAxeLabel, dataset);
+        frame = new ChartFrame(chartTitle, chart);
         XYPlot plot = chart.getXYPlot();
 
         DeviationRenderer renderer = new DeviationRenderer(true, false);
@@ -91,13 +102,40 @@ public class ChartFabrik {
             }
         });
 
-        ChartFrame frame = new ChartFrame(chartTitle, chart);
         JPanel panel = new JPanel();
-
         panel.add(comboBox);
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         frame.add(panel);
         frame.pack();
+    }
+
+    /**
+     * Method to create a new chart
+     * @param chartTitle the chart title
+     * @param xAxeLabel a label for the X-axis
+     * @param yAxeLabel a label for the Y-axis
+     * @param dataset the dataset for the chart
+     * @return a created chart
+     */
+    private JFreeChart createChart(String chartTitle, String xAxeLabel, String yAxeLabel, YIntervalSeriesCollection dataset) {
+
+        chart = ChartFactory.createXYLineChart(
+                chartTitle,
+                xAxeLabel,
+                yAxeLabel,
+                dataset,
+                PlotOrientation.HORIZONTAL,
+                true,
+                true,
+                false
+        );
+        return chart;
+    }
+
+    /**
+     * Method to set the frame visible
+     */
+    public void display() {
         frame.setVisible(true);
     }
 }
